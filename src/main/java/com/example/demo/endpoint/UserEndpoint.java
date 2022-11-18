@@ -19,8 +19,7 @@ public class UserEndpoint {
 	
 	@PostMapping("/add")
 	public String getName(@RequestBody UserRequest request) {
-		System.out.print("rider : "+rider.toString());
-		return "Goutam "+rider.getName();
+		return request.getName();
 	}
 	
 
