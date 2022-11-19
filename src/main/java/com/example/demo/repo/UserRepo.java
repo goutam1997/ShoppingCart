@@ -6,4 +6,5 @@ public interface UserRepo {
 	boolean validateUser(long userid);
 	void addUser(User user);
 	User getUser(long userid);
+	long getCartId(long userid);
 }

@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.model.User;
-import com.example.demo.model.UserRequest;
 
 @Repository
 public class UserRepoImpl implements UserRepo {
@@ -26,6 +25,11 @@ public class UserRepoImpl implements UserRepo {
 	@Override
 	public User getUser(long userid) {
 		return userMap.get(userid);
+	}
+
+	@Override
+	public long getCartId(long userid) {
+		return userMap.get(userid).getShoppingCartId();
 	}
 
 }

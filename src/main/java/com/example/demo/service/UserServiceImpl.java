@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUser(long userid) throws UserNotExistException {
 		if(!userRepo.validateUser(userid)) {
-			throw new UserNotExistException("User doesn't exist!!!");
+			throw new UserNotExistException();
 		}
 		return userRepo.getUser(userid);
 	}
