@@ -21,4 +21,9 @@ public class ProductRepoImpl implements ProductRepo {
 		return productMap.get(id);
 	}
 
+	@Override
+	public boolean checkProductExistence(long productId) {
+		return productMap.containsKey(productId);
+	}
+
 }

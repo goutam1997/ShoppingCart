@@ -1,9 +1,14 @@
 package com.example.demo.service;
 
-import com.example.demo.model.CartRequest;
+import java.util.List;
+
+import com.example.demo.model.ProductQty;
+import com.example.demo.request.CartRequestObject;
 
 public interface CartService {
 
-	void addToCart(CartRequest request);
+	void addToCart(CartRequestObject request);
+
+	List<ProductQty> viewCart(long userid);
 
 }

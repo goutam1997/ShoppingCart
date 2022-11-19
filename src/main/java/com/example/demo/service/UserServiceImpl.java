@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import com.example.demo.exception.UserAlreadyExistsException;
 import com.example.demo.exception.UserNotExistException;
 import com.example.demo.model.User;
-import com.example.demo.model.UserRequest;
 import com.example.demo.repo.CartRepo;
 import com.example.demo.repo.UserRepo;
+import com.example.demo.request.UserRequestObject;
 import com.example.demo.strategy.IdCreatorStrategy;
 
 @Service
@@ -24,10 +24,10 @@ public class UserServiceImpl implements UserService {
 	private IdCreatorStrategy strategy;
 
 	@Override
-	public long addUser(UserRequest request) {
+	public long addUser(UserRequestObject request) {
 		long userid=strategy.createId(request);
 		if(userRepo.validateUser(userid)) {
-			throw new UserAlreadyExistsException("User already exists!!!");
+			throw new UserAlreadyExistsException();
 		}
 		User user=new User();
 		user.setUserid(userid);
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getUser(long userid) throws UserNotExistException {
+	public User getUser(long userid) {
 		if(!userRepo.validateUser(userid)) {
 			throw new UserNotExistException();
 		}
