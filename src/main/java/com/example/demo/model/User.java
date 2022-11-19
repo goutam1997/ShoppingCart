@@ -7,10 +7,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserResponse {
+public class User {
 	@JsonIgnoreProperties
 	private long userid;
 	
 	private String name;
 	private long mobile;
+	
+	@JsonIgnoreProperties
+	private long shoppingCartId;
 }

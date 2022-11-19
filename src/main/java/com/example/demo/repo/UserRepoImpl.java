@@ -3,9 +3,9 @@ package com.example.demo.repo;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.catalina.User;
 import org.springframework.stereotype.Repository;
 
+import com.example.demo.model.User;
 import com.example.demo.model.UserRequest;
 
 @Repository
@@ -15,14 +15,12 @@ public class UserRepoImpl implements UserRepo {
 
 	@Override
 	public boolean validateUser(long userid) {
-		// TODO Auto-generated method stub
-		return false;
+		return userMap.containsKey(userid);
 	}
 
 	@Override
-	public long addUser(long userid, UserRequest request) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void addUser(User user) {
+		userMap.put(user.getUserid(), user);
 	}
 
 }

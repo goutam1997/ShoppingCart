@@ -1,8 +1,8 @@
 package com.example.demo.repo;
 
-import com.example.demo.model.UserRequest;
+import com.example.demo.model.User;
 
 public interface UserRepo {
 	boolean validateUser(long userid);
-	long addUser(long userid, UserRequest request);
+	void addUser(User user);
 }

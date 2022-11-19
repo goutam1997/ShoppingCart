@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.exception.UserNotExistException;
+import com.example.demo.model.User;
 import com.example.demo.model.UserRequest;
-import com.example.demo.model.UserResponse;
 import com.example.demo.service.UserService;
 
 @RestController
@@ -20,12 +21,18 @@ public class UserEndpoint {
 	private UserService userService;
 
 	@GetMapping("/{userid}/details")
-	public UserResponse getUser(@PathVariable long userid) {
-		return userService.getUser(userid);
+	public User getUser(@PathVariable long userid) {
+		User user=null;
+		try {
+			user = userService.getUser(userid);
+		} catch (UserNotExistException e) {
+			System.out.print(e.getMessage());
+		}
+		return user;
 	}
 	
 	@PostMapping("/add")
-	public long getName(@RequestBody UserRequest request) {
+	public long addUser(@RequestBody UserRequest request) {
 		return userService.addUser(request);
 	}
 	
