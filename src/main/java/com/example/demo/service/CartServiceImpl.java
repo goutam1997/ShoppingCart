@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.exception.UserNotExistException;
 import com.example.demo.model.CartRequest;
@@ -10,6 +11,7 @@ import com.example.demo.repo.CartRepo;
 import com.example.demo.repo.ProductRepo;
 import com.example.demo.repo.UserRepo;
 
+@Service
 public class CartServiceImpl implements CartService {
 	
 	@Autowired

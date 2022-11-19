@@ -18,7 +18,7 @@ public class CartEndpoint {
 
 	
 	@PostMapping("/add")
-	public long addUser(@RequestBody CartRequest request) {
-		return cartService.addToCart(request);
+	public void addToCart(@RequestBody CartRequest request) {
+		cartService.addToCart(request);
 	}
 }
