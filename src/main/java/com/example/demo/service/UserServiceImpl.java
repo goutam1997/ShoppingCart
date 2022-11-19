@@ -7,6 +7,7 @@ import com.example.demo.exception.UserAlreadyExistsException;
 import com.example.demo.exception.UserNotExistException;
 import com.example.demo.model.User;
 import com.example.demo.model.UserRequest;
+import com.example.demo.repo.CartRepo;
 import com.example.demo.repo.UserRepo;
 import com.example.demo.strategy.IdCreatorStrategy;
 
@@ -15,6 +16,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserRepo userRepo;
+	
+	@Autowired
+	private CartRepo cartRepo;
 	
 	@Autowired
 	private IdCreatorStrategy strategy;
@@ -27,9 +31,12 @@ public class UserServiceImpl implements UserService {
 		}
 		User user=new User();
 		user.setUserid(userid);
-		user.setName(user.getName());
-		user.setMobile(user.getMobile());
-		user.setShoppingCartId(strategy.createShoppingCartId(request));
+		user.setName(request.getName());
+		user.setMobile(request.getMobile());
+		
+		long cartId = strategy.createShoppingCartId(request);
+		cartRepo.addCart(cartId);
+		user.setShoppingCartId(cartId);
 		
 		userRepo.addUser(user);
 		return userid;
@@ -40,7 +47,7 @@ public class UserServiceImpl implements UserService {
 		if(!userRepo.validateUser(userid)) {
 			throw new UserNotExistException("User doesn't exist!!!");
 		}
-		return null;
+		return userRepo.getUser(userid);
 	}
 
 }

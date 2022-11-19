@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
@@ -8,12 +9,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class User {
-	@JsonIgnoreProperties
+	@JsonIgnore
 	private long userid;
 	
 	private String name;
 	private long mobile;
 	
-	@JsonIgnoreProperties
+	@JsonIgnore
 	private long shoppingCartId;
 }

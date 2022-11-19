@@ -23,4 +23,9 @@ public class UserRepoImpl implements UserRepo {
 		userMap.put(user.getUserid(), user);
 	}
 
+	@Override
+	public User getUser(long userid) {
+		return userMap.get(userid);
+	}
+
 }
