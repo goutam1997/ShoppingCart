@@ -1,7 +1,9 @@
 package com.example.demo.repo;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
@@ -26,4 +28,8 @@ public class ProductRepoImpl implements ProductRepo {
 		return productMap.containsKey(productId);
 	}
 
+	@Override
+	public List<Product> viewAllProduct() {
+		return productMap.entrySet().stream().map(entry -> entry.getValue()).collect(Collectors.toList());
+	}
 }

@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,19 @@ public class ProductServiceImpl implements ProductService {
 		product.setId(productId);
 		productRepo.addProduct(product);
 		return productId;
+	}
+
+	@Override
+	public List<Product> viewAllProduct() {
+		return productRepo.viewAllProduct();
+	}
+
+	@Override
+	public Product viewProduct(long productId) {
+		if(productRepo.checkProductExistence(productId)) {
+			throw new ProductAlreadyExistsException();
+		}
+		return productRepo.getProductById(productId);
 	}
 
 }

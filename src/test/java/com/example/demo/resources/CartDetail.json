@@ -1,0 +1,24 @@
+{
+    "name": "Goutam",
+    "productQties": [
+        {
+            "qty": 5,
+            "product": {
+                "name": "rice",
+                "price": 45.69,
+                "type": "FOOD"
+            },
+            "totalPrice": 228.45
+        },
+        {
+            "qty": 2,
+            "product": {
+                "name": "shirt",
+                "price": 1200.0,
+                "type": "CLOTHES"
+            },
+            "totalPrice": 2400.0
+        }
+    ],
+    "cartPrice": 2628.45
+}
